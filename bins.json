@@ -1,0 +1,48 @@
+{
+  "stale": false,
+  "updated_at": "2026-08-26T18:59:13+01:00",
+  "collections": [
+    {
+      "date": "2026-08-27",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Rubbish", "icon": "⬛"}
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Mixed recycling", "icon": "🟢🔵"}
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Rubbish", "icon": "⬛"}
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Mixed recycling", "icon": "🟢🔵"}
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Rubbish", "icon": "⬛"}
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "bins": [
+        {"type": "Food", "icon": "🟤"},
+        {"type": "Mixed recycling", "icon": "🟢🔵"}
+      ]
+    }
+  ]
+}
