@@ -1,0 +1,47 @@
+name: Update bin schedule
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-bin-schedule
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch fresh schedule
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 --retry-delay 5 \
+            https://catsnake.uk/bins.json \
+            -o bins.new.json
+
+          jq -e '
+            .stale == false and
+            (.collections | type == "array") and
+            (.collections | length > 0)
+          ' bins.new.json >/dev/null
+
+      - name: Publish when changed
+        run: |
+          set -euo pipefail
+          if cmp -s bins.new.json bins.json; then
+            echo "Schedule unchanged"
+            exit 0
+          fi
+
+          mv bins.new.json bins.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bins.json
+          git commit -m "Update bin collection schedule"
+          git push
